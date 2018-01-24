@@ -1,8 +1,18 @@
 spring cloud
 ===
 
+version
+---
+
 - spring boot: 1.5.9.RELEASE
 - spring-cloud: Edgware.RELEASE
+
+app
+---
+
+- sv-config
+- sv-registry
+- sv- gateway
 
 spring cloud
 ---

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: sv-gateway
+  cloud:
+    config:
+      uri: http://config:8888
+      fail-fast: true
+#      password: ${CONFIG_SERVICE_PASSWORD}
+      password: 123
+      username: user
