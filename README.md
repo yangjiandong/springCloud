@@ -6,13 +6,15 @@ version
 
 - spring boot: 1.5.9.RELEASE
 - spring-cloud: Edgware.RELEASE
-
+-[Spring IO Platform 依赖包](https://docs.spring.io/platform/docs/Brussels-SR6/reference/htmlsingle/#appendix-dependency-versions)
+  - docs/save/Appendix A. Dependency versions.html
+  
 app
 ---
 
 - sv-config
 - sv-registry
-- sv- gateway
+- sv-gateway
 
 spring cloud
 ---
