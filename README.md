@@ -12,9 +12,10 @@ version
 app
 ---
 
-- sv-config
+- sv-config, port: 8888
 - sv-registry
 - sv-gateway
+- sv-monitoring
 
 spring cloud
 ---

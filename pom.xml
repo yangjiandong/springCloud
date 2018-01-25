@@ -61,6 +61,7 @@
     <module>sv-config</module>
     <module>sv-registry</module>
     <module>sv-gateway</module>
+    <module>sv-monitoring</module>
   </modules>
 
   <dependencyManagement>
