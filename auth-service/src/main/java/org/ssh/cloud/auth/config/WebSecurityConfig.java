@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -15,7 +14,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
@@ -99,36 +97,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     return new EkAccessDecisionManager();
   }
 
-  void configByM(HttpSecurity http) throws Exception {
-    String loginPath = "/" + loginRoutePath;
-
-    // 只解决必须登录才能访问，没解决指定url 必须有角色的场景
-    http.csrf().disable()
-      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-      .and()
-      .authorizeRequests()
-      .antMatchers(
-        // HttpMethod.GET,
-        // 完全允许的访问
-        "/favicon.ico",
-        "/demo/**",
-        "/common/**",
-        "/druidd/**"
-        // "/hz/**"
-        // , "/health/**","/info/**",
-        // "/metrics/**","/env/**","/jolokia/**","/logfile/**","/loggers/**","/dump/**",
-        // "/flyway/**", "/liquibase/**", "/auditevents/**", "/trace/**"//spring admin
-      ).permitAll()
-      // 所有 /login 的POST请求 都放行
-      .antMatchers(HttpMethod.POST, loginPath + "/**").permitAll()
-      .anyRequest().authenticated() // 尚未匹配的任何URL要求用户进行身份验证
-      .and()
-      .logout().logoutUrl("/logout")
-      .addLogoutHandler(new EkLogoutHandler())
-      .logoutSuccessHandler((new EkLogoutSuccessHandler(HttpStatus.OK)))
-    ;
-  }
-
   void configBywithObjectPostProcessor(HttpSecurity http) throws Exception {
     // withObjectPostProcessor 方案，必须所有url都进行维护
     http.logout().logoutUrl("/logout")
@@ -161,13 +129,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    // Enable so that the clients can authenticate via HTTP basic for registering
-    // http.httpBasic();
 
     String loginPath = "/" + loginRoutePath;
 
     configBywithObjectPostProcessor(http);
-    // configByM(http);
 
     // 禁用缓存
     http.headers().cacheControl();
@@ -178,45 +143,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       // 添加一个过滤器验证其他请求的Token是否合法
       .addFilterBefore(new JWTAuthenticationFilter(),
         UsernamePasswordAuthenticationFilter.class);
-  }
-
-  void configOther() {
-
-    // http.authorizeRequests()
-    //     .antMatchers(
-    //         // HttpMethod.GET,
-    //         // 完全允许的访问
-    //         "/favicon.ico",
-    //         "/demo/**",
-    //         "/common/**"
-    //     ).permitAll()
-    //     // 所有 /login 的POST请求 都放行
-    //     //.antMatchers(HttpMethod.POST, loginPath + "/**").permitAll()
-    //     .anyRequest().authenticated()
-    //     .and()
-    //     .logout().permitAll() // 支持注销
-    //     .and()
-    //     .authorizeRequests()
-    //     .anyRequest().authenticated() // 尚未匹配的任何URL要求用户进行身份验证
-    //     .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
-    //         public <O extends FilterSecurityInterceptor> O postProcess(
-    //             O fsi) {
-    //             fsi.setSecurityMetadataSource(mySecurityMetadataSource());
-    //             fsi.setAccessDecisionManager(myAccessDecisionManager());
-    //             return fsi;
-    //         }
-    //     })
-    //     // .antMatchers("/user/**").hasRole("ADMIN")
-    // //.and() // and()方法相当于XML标签的关闭
-    // //.addFilter(filterSecurityInterceptor())
-    // //.and()
-    // //.sessionManagement()
-    // // .maximumSessions(1) //限制登录多次
-    // // .maxSessionsPreventsLogin(true)
-    // //.sessionRegistry(sessionRegistry())//error-if-maximum-exceeded
-    // //.and()
-    // // 基于token，所以不需要session
-    // ;
-
   }
 }
