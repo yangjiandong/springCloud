@@ -13,10 +13,10 @@ app
 ---
 
 - sv-config, port: 8888
-- sv-registry
-- sv-gateway
+- sv-registry, port: 8761
+- sv-gateway, port: 4000
 - sv-monitoring
-- auth-service
+- auth-service, port: 5000
 
 spring cloud
 ---
