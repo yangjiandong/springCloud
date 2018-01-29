@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="60">
+  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+  <springProperty name="logstashDestination" source="logstash.destination"/>
+  <springProperty name="logstashEnabled" source="logstash.enable"/>
+  <springProperty name="appName" source="sshapp.appname"/>
+  <springProperty name="env" source="spring.profiles.active"/>
+  <property name="PATTERN"
+    value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } [%t] --- %-40.40logger{39} : %caller{1} - %msg%n"/>
+
+  <!-- 文件路径 -->
+  <springProperty name="LOG_FILE" source="sshapp.appname"/>
+  <property name="LOG_FILE_PATH" value="logs"/>
+
+  <!-- 每天产生一个文件 -->
+  <appender name="DFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 文件路径 -->
+    <file>${LOG_FILE_PATH}/${LOG_FILE}.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 文件名称 -->
+      <fileNamePattern>${LOG_FILE_PATH}/${LOG_FILE}.%d{yyyy-MM-dd}.log
+      </fileNamePattern>
+      <!-- 文件最大保存历史数量 -->
+      <MaxHistory>30</MaxHistory>
+    </rollingPolicy>
+
+    <encoder>
+      <Pattern>${PATTERN}</Pattern>
+    </encoder>
+  </appender>
+
+  <!-- 开发环境 -->
+  <springProfile name="dev">
+    <logger name="org.ssh.cloud.auth" level="debug"/>
+    <root level="info">
+      <appender-ref ref="DFILE"/>
+    </root>
+  </springProfile>
+
+  <!-- 生产环境 -->
+  <springProfile name="pro">
+    <logger name="org.ssh.boot.app.cron.Task" level="info"/>
+    <logger name="org.ssh.boot.app.service.CrawlerSfdaService" level="info"/>
+    <root level="error">
+      <appender-ref ref="DFILE"/>
+    </root>
+  </springProfile>
+
+</configuration>

@@ -5,9 +5,7 @@
 
   <groupId>org.sshapp</groupId>
   <artifactId>sv-gateway</artifactId>
-  <version>${sshappcloud.version}</version>
   <packaging>jar</packaging>
-
   <name>sv-gateway</name>
 
   <parent>

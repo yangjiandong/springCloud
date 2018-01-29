@@ -5,9 +5,7 @@
 
   <groupId>org.sshapp</groupId>
   <artifactId>sv-monitoring</artifactId>
-  <version>${sshappcloud.version}</version>
   <packaging>jar</packaging>
-
   <name>sv-monitoring</name>
 
   <parent>

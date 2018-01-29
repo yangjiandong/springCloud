@@ -16,6 +16,7 @@ app
 - sv-registry
 - sv-gateway
 - sv-monitoring
+- auth-service
 
 spring cloud
 ---
@@ -30,3 +31,15 @@ spring cloud
 - 用于监控数据收集和展示的Spectator、Servo、Atlas，
 - 用于配置读取的Archaius和提供Controller层Reactive封装的RxJava
 
+2018.01.27
+---
+
+### 依赖 sshapp-springboot-parent
+
+```
+  <parent>
+    <groupId>org.sshapp</groupId>
+    <artifactId>sshapp-springboot-parent</artifactId>
+    <version>1.5.0</version>
+  </parent>
+```

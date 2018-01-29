@@ -4,11 +4,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.sshapp</groupId>
+  <!--<groupId>org.sshapp</groupId>-->
   <artifactId>sv-config</artifactId>
-  <version>${sshappcloud.version}</version>
   <packaging>jar</packaging>
-
   <name>sv-config</name>
   <description>配置中心</description>
 
@@ -28,18 +26,6 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
   </dependencies>
-
-  <!--<dependencyManagement>-->
-    <!--<dependencies>-->
-      <!--<dependency>-->
-        <!--<groupId>org.springframework.cloud</groupId>-->
-        <!--<artifactId>spring-cloud-dependencies</artifactId>-->
-        <!--<version>Camden.RELEASE</version>-->
-        <!--<type>pom</type>-->
-        <!--<scope>import</scope>-->
-      <!--</dependency>-->
-    <!--</dependencies>-->
-  <!--</dependencyManagement>-->
 
   <build>
     <plugins>

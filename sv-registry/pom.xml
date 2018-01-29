@@ -5,9 +5,7 @@
 
   <groupId>org.sshapp</groupId>
   <artifactId>sv-registry</artifactId>
-  <version>${sshappcloud.version}</version>
   <packaging>jar</packaging>
-
 	<name>sv-registry</name>
 
   <parent>
