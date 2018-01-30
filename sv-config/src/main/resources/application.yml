@@ -3,7 +3,8 @@ spring:
     config:
       server:
         native:
-          search-locations: classpath:/shared
+#          search-locations: classpath:/shared
+          search-locations: file:/Users/yangjiandong/workspace/ssh/ssh-config
   profiles:
      active: native
 

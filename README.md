@@ -18,6 +18,16 @@ app
 - sv-monitoring
 - auth-service, port: 5000
 
+config /etc/hosts
+
+```
+127.0.0.1 config
+127.0.0.1 sv-registry
+127.0.0.1 sv-gateway
+127.0.0.1 sv-monitoring
+127.0.0.1 auth-service
+```
+
 spring cloud
 ---
 
