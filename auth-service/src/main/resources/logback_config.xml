@@ -32,7 +32,7 @@
 
   <!-- 开发环境 -->
   <springProfile name="dev">
-    <logger name="org.ssh.cloud.auth" level="debug"/>
+    <logger name="org.ssh.boot" level="debug"/>
     <root level="info">
       <appender-ref ref="DFILE"/>
     </root>

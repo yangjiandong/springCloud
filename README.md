@@ -41,6 +41,26 @@ spring cloud
 - 用于监控数据收集和展示的Spectator、Servo、Atlas，
 - 用于配置读取的Archaius和提供Controller层Reactive封装的RxJava
 
+
+2018.01.30
+---
+
+### @Configuration
+
+sshapp-jpa-common 引入到其他项目，如果项目的包路径与 `org.ssh.boot.conf` 不一致，引入的 jpa-common 配置就无效
+
+example:
+- sshapp-jpa-common package: org.ssh.boot
+- one app package: org.ssh.cloud.auth
+
+按这种方式启动的话，就找不到 sshapp-jap-common
+
+必须按以下规范:
+- sshapp-jpa-common package: org.ssh.boot
+- one app package: org.ssh.boot.Application( main application class), 只要保证了启动程序的 package 为 org.ssh.boot
+
+统一以后项目启动类为 `org.ssh.boot.ExampleApplication.class`
+
 2018.01.27
 ---
 
