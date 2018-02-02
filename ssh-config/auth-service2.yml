@@ -1,0 +1,113 @@
+
+server:
+  context-path: /uaa
+  port: 5000
+
+spring:
+  profiles:
+    active: dev
+
+# for log file name
+sshapp:
+  appname: @project.name@
+  description: @project.description@
+  version: @project.version@
+  buildId: 2018011910
+
+# 很重要的配置
+basePackages: org.ssh.boot.**.dao
+entityPackages: org.ssh.boot.**.entity
+sysBasePackages: org.ssh.boot.**.dao
+sysEntityPackages: org.ssh.boot.**.entity
+
+ssh:
+  primary:
+    datasource:
+      url: jdbc:mysql://localhost:3306/scloud?useSSL=false
+      username: root
+      password: 123
+    hibernate:
+      hbm2ddl:
+        auto: update
+      show_sql: false
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      jdbc.batch_size: 100
+  sys:
+    datasource:
+      url: jdbc:mysql://localhost:3306/scloud?useSSL=false
+      username: root
+      password: 123
+
+# spring security
+# 60秒内3次,
+login_max_attempts: 3
+login_max_attempts_times: 60
+# 锁定时间3分
+login_locked_wait_times: 180
+#login_jwt_expirationtime=432000
+login_jwt_route_path: auth
+login_jwt_route_refresh: refresh
+
+
+# 参考 https://github.com/alibaba/druid/blob/master/druid-spring-boot-starter/README.md
+#druid
+spring:
+  datasource:
+    druid:
+      initialSize: 8
+      minIdle: 1
+      maxActive: 20
+      maxWait: 60000
+# 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+# 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall,log4j
+# 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+# 合并多个DruidDataSource的监控数据
+#spring.datasource.useGlobalDataSourceStat=true
+# 泄漏检查
+      removeAbandoned: true
+      removeAbandonedTimeout: 1800
+      logAbandoned: true
+# WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      WebStatFilter:
+        enabled: true
+#是否启用StatFilter默认值true
+        urlPattern: /*
+        exclusions: *.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druidd/*
+#spring.datasource.druid.WebStatFilter.sessionStatMaxCount=
+#spring.datasource.druid.WebStatFilter.sessionStatEnable=
+#spring.datasource.druid.WebStatFilter.principalSessionName=
+#spring.datasource.druid.WebStatFilter.principalCookieName=
+#spring.datasource.druid.WebStatFilter.profileEnable=
+# StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      StatViewServlet:
+        enabled: true
+# 是否启用StatViewServlet默认值true
+        urlPattern: /druidd/*
+#spring.datasource.druid.StatViewServlet.resetEnable=
+        loginUsername: admin
+        loginPassword: druidd
+#spring.datasource.druid.StatViewServlet.allow=
+#spring.datasource.druid.StatViewServlet.deny=
+      defaultAutoCommit: false
+# 记录log, 隔300000(5分钟)保存
+#spring.datasource.druid.timeBetweenLogStatsMillis=60000
+
+#oracle
+#ssh.primary.datasource.driverClassName=oracle.jdbc.OracleDriver
+#ssh.primary.datasource.url=jdbc:oracle:thin:@192.168.1.58:1521:thip
+#ssh.primary.datasource.username=comm
+#ssh.primary.datasource.password=comm
+#ssh.primary.hibernate.hbm2ddl.auto=update
+#ssh.primary.hibernate.show_sql=true
+#ssh.primary.hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+#
+
+################################
+#配置日志
+logging:
+  config: classpath:logback_config.xml
