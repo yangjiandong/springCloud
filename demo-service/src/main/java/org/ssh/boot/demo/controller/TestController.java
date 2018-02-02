@@ -18,6 +18,6 @@ public class TestController {
 
     @RequestMapping(value = "/hello")
     public String hello() {
-        return "hello";
+        return "你好，世界";
     }
 }

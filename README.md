@@ -15,7 +15,7 @@ app
 - sv-config, port: 8888
 - sv-registry, port: 8761
 - sv-gateway, port: 4000
-- sv-monitoring
+- sv-monitoring, port: 8080, Hystrix Dashboard
 - demo-service, port: 5001
 - auth-service, port: 5000
 
@@ -27,9 +27,19 @@ config /etc/hosts
 127.0.0.1 sv-gateway
 127.0.0.1 sv-monitoring
 127.0.0.1 auth-service
+127.0.0.1 demo-service
 ```
 
-- brower: `http://sv-registry:8761/`, `http://sv-registry:8761/eureka/apps`
+run:
+- sv-config, sv-registry, sv-gateway, sv-monitoring
+- demo-service
+
+brower: 
+    - `http://sv-registry:8761/`, 
+    - `http://sv-registry:8761/eureka/apps`
+    - `http://localhost:8080/hystrix`
+    - demo-service by zuul: `http://localhost:4000/demo/hello`
+    
 - [Eureka高可用集群](http://tech.lede.com/2017/03/29/rd/server/SpringCloud1C/), 采用相同配置发布
 
     ```
@@ -40,7 +50,7 @@ config /etc/hosts
 
 - sv-registry 运行成功后，其他 app 的 application.yml 设置了 `eureka.client.serviceUrl.defaultZone=http://sv-registry:8761/eureka/`, 就能自动注册到该服务
 - demo-service: Feign客户端
-    - TestController, `/testEureka`
+    - TestController, `/testEureka`, 没成功
     
 
 spring cloud
@@ -52,7 +62,10 @@ spring cloud
 - Hystrix,调用断路器
 - Ribbon, 调用端负载均衡
 - 智能服务路由,Zuul
+    - 路由方式: url, serviceId
+    - [spring cloud zuul 学习](http://tech.lede.com/2017/05/16/rd/server/SpringCloudZuul/)
 - Feign, Rest客户端
+- sleuth, 提供了对spring cloud系列的链路追踪
 - 用于监控数据收集和展示的Spectator、Servo、Atlas，
 - 用于配置读取的Archaius和提供Controller层Reactive封装的RxJava
 
