@@ -7,7 +7,7 @@ spring:
       server:
         native:
 #          search-locations: classpath:/shared
-          search-locations: file:/Users/yangjiandong/workspace/ssh/ssh-config
+          search-locations: file:/Users/yangjiandong/workspace/ssh/sshapp-springcloud/ssh-config
   profiles:
      active: native
 

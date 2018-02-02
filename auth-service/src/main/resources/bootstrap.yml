@@ -7,3 +7,10 @@ spring:
       fail-fast: true
       password: 123
       username: user
+
+
+# 很重要的配置
+basePackages: org.ssh.boot.auth.**.dao
+entityPackages: org.ssh.boot.auth.**.entity
+sysBasePackages: org.ssh.boot.auth.**.dao
+sysEntityPackages: org.ssh.boot.auth.**.entity

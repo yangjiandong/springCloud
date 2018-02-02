@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 从高到地低 OFF 、 FATAL 、 ERROR 、 WARN 、 INFO 、 DEBUG 、 TRACE 、 ALL -->
+<!-- 日志输出规则  根据当前ROOT 级别，日志输出时，级别高于root默认的级别时  会输出 -->
+<!-- 以下  每个配置的 filter 是过滤掉输出文件里面，会出现高级别文件，依然出现低级别的日志信息，通过filter 过滤只记录本级别的日志-->
+
 <configuration monitorInterval="60">
   <include resource="org/springframework/boot/logging/logback/base.xml"/>
 

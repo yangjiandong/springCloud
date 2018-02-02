@@ -8,7 +8,7 @@ version
 - spring-cloud: Edgware.RELEASE
 -[Spring IO Platform 依赖包](https://docs.spring.io/platform/docs/Brussels-SR6/reference/htmlsingle/#appendix-dependency-versions)
   - docs/save/Appendix A. Dependency versions.html
-  
+
 app
 ---
 
@@ -16,6 +16,7 @@ app
 - sv-registry, port: 8761
 - sv-gateway, port: 4000
 - sv-monitoring
+- demo-service, port: 5001
 - auth-service, port: 5000
 
 config /etc/hosts
@@ -27,6 +28,20 @@ config /etc/hosts
 127.0.0.1 sv-monitoring
 127.0.0.1 auth-service
 ```
+
+- brower: `http://sv-registry:8761/`, `http://sv-registry:8761/eureka/apps`
+- [Eureka高可用集群](http://tech.lede.com/2017/03/29/rd/server/SpringCloud1C/), 采用相同配置发布
+
+    ```
+    server.port=1111
+    spring.application.name=eureka-server
+    eureka.client.serviceUrl.defaultZone=http://10.120.163.01:1111/eureka/,http://10.120.163.02:1111/eureka/
+    ```
+
+- sv-registry 运行成功后，其他 app 的 application.yml 设置了 `eureka.client.serviceUrl.defaultZone=http://sv-registry:8761/eureka/`, 就能自动注册到该服务
+- demo-service: Feign客户端
+    - TestController, `/testEureka`
+    
 
 spring cloud
 ---
@@ -41,6 +56,12 @@ spring cloud
 - 用于监控数据收集和展示的Spectator、Servo、Atlas，
 - 用于配置读取的Archaius和提供Controller层Reactive封装的RxJava
 
+### 参考项目
+
+- [pig](https://gitee.com/log4j/pig)
+- [PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)
+- udp
+  - [udp blog](https://my.oschina.net/wangkang80/blog), 有空看看
 
 2018.01.30
 ---
