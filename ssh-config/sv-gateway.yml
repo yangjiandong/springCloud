@@ -19,7 +19,7 @@ zuul:
   routes:
     demo-service:
         path: /demo/**
-        url: http://demo-service:5001
+        serviceId: demo-service
         stripPrefix: false
         sensitiveHeaders:
     auth-service:

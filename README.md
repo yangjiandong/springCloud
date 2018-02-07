@@ -18,6 +18,7 @@ app
 - sv-monitoring, port: 8080, Hystrix Dashboard
 - demo-service, port: 5001
 - auth-service, port: 5000
+- notification-service,
 
 config /etc/hosts
 
@@ -66,6 +67,7 @@ spring cloud
     - [spring cloud zuul 学习](http://tech.lede.com/2017/05/16/rd/server/SpringCloudZuul/)
 - Feign, Rest客户端
 - sleuth, 提供了对spring cloud系列的链路追踪
+- [Application Performance Management](https://www.zhihu.com/question/27994350): zipkin,cat(国内)
 - 用于监控数据收集和展示的Spectator、Servo、Atlas，
 - 用于配置读取的Archaius和提供Controller层Reactive封装的RxJava
 
@@ -75,7 +77,14 @@ spring cloud
 - [PiggyMetrics](https://github.com/cloudframeworks-springcloud/PiggyMetrics)
 - udp
   - [udp blog](https://my.oschina.net/wangkang80/blog), 有空看看
+- [AG-Admin](https://gitee.com/geek_qi/ace-security)
 
+    AG-Admin是国内首个基于Spring Cloud微服务化开发平台，具有统一授权、认证后台管理系统，其中包含具备用户管理、资源权限管理、网关API管理等多个模块，支持多业务系统并行开发，可以作为后端服务的开发脚手架。代码简洁，架构清晰，适合学习和直接项目中使用。核心技术采用Eureka、Fegin、Ribbon、Zuul、Hystrix、JWT Token、Mybatis等主要框架和中间件，前端采用vue-element-admin组件。
+    
+- [zhangxd1989/spring-boot-cloud](https://github.com/zhangxd1989/spring-boot-cloud)
+    - 基于 Spring Boot、Spring Cloud、Spring Oauth2 和 Spring Cloud Netflix 等框架构建的微服务项目。
+    - [介绍](https://my.oschina.net/yanpenglei/blog/1591159)
+    
 2018.01.30
 ---
 

@@ -22,44 +22,44 @@ import org.ssh.boot.utils.cache.RedisCache;
 @ImportResource({"classpath:/applicationContext-sshapp.xml"})
 public class AuthApplication {
 
-  @Value("${cache_type:ehcache}")
-  String cacheType;
+    @Value("${cache_type:ehcache}")
+    String cacheType;
 
-  // ID 生产方案
-  @Bean
-  public SnowFlake snowFlake() {
-    return new SnowFlake(0, 0);
-  }
-
-  // cache
-  @Bean
-  public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
-    EhCacheManagerFactoryBean cacheManagerFactoryBean = new EhCacheManagerFactoryBean();
-    cacheManagerFactoryBean.setConfigLocation(new ClassPathResource("/ehcache.xml"));
-    return cacheManagerFactoryBean;
-  }
-
-  @Bean
-  public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean bean) {
-    return new EhCacheCacheManager(bean.getObject());
-  }
-
-  @Bean
-  public ICache getCacheBean() {
-    if (cacheType.equals("redis")) {
-      return new RedisCache();
-    } else {
-      return new EhCache();
+    // ID 生产方案
+    @Bean
+    public SnowFlake snowFlake() {
+        return new SnowFlake(0, 0);
     }
-  }
 
-  @Bean
-  public SpringContextHolder getSpringContextHolder() {
-    return new SpringContextHolder();
-  }
+    // cache
+    @Bean
+    public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
+        EhCacheManagerFactoryBean cacheManagerFactoryBean = new EhCacheManagerFactoryBean();
+        cacheManagerFactoryBean.setConfigLocation(new ClassPathResource("/ehcache.xml"));
+        return cacheManagerFactoryBean;
+    }
 
-  public static void main(String[] args) {
-    SpringApplication.run(AuthApplication.class, args);
-  }
+    @Bean
+    public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean bean) {
+        return new EhCacheCacheManager(bean.getObject());
+    }
+
+    @Bean
+    public ICache getCacheBean() {
+        if (cacheType.equals("redis")) {
+            return new RedisCache();
+        } else {
+            return new EhCache();
+        }
+    }
+
+    @Bean
+    public SpringContextHolder getSpringContextHolder() {
+        return new SpringContextHolder();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(AuthApplication.class, args);
+    }
 
 }

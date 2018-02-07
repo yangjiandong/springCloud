@@ -14,41 +14,41 @@ import org.ssh.boot.auth.service.UserService;
 @Slf4j
 public class ApplicationStartup implements ApplicationListener<ContextRefreshedEvent> {
 
-  @Autowired
-  UserService userService;
+    @Autowired
+    UserService userService;
 
-  @Override
-  public void onApplicationEvent(final ContextRefreshedEvent event) {
-    log.info("start onApplicationEvent ...");
+    @Override
+    public void onApplicationEvent(final ContextRefreshedEvent event) {
+        log.info("start onApplicationEvent ...");
 
-    // 执行多次的解决
-    if (event.getApplicationContext().getParent() == null) {
-      log.info("start...");
+        // 执行多次的解决
+        if (event.getApplicationContext().getParent() == null) {
+            log.info("start...");
 
-      initUser();
-      initResource();
+            initUser();
+            initResource();
+        }
     }
-  }
 
-  void initUser() {
-    StopWatch stopwatch = new StopWatch();
-    stopwatch.start("生成User");
-    userService.initData();
-    stopwatch.stop();
-    log.info("{}, {}", stopwatch.getLastTaskName(), stopwatch.getTotalTimeSeconds());
-  }
-
-  void initResource() {
-    StopWatch stopwatch = new StopWatch();
-    stopwatch.start("生成Resource");
-    try {
-      userService.initResource((resource, isAdmin) -> {
-      });
-    } catch (IOException e) {
-      log.error("初始化菜单出错: ", e);
+    void initUser() {
+        StopWatch stopwatch = new StopWatch();
+        stopwatch.start("生成User");
+        userService.initData();
+        stopwatch.stop();
+        log.info("{}, {}", stopwatch.getLastTaskName(), stopwatch.getTotalTimeSeconds());
     }
-    stopwatch.stop();
-    log.info("{}, {}", stopwatch.getLastTaskName(), stopwatch.getTotalTimeSeconds());
-  }
+
+    void initResource() {
+        StopWatch stopwatch = new StopWatch();
+        stopwatch.start("生成Resource");
+        try {
+            userService.initResource((resource, isAdmin) -> {
+            });
+        } catch (IOException e) {
+            log.error("初始化菜单出错: ", e);
+        }
+        stopwatch.stop();
+        log.info("{}, {}", stopwatch.getLastTaskName(), stopwatch.getTotalTimeSeconds());
+    }
 
 }
