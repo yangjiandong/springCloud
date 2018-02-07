@@ -13,7 +13,8 @@ todo
 ## zuul 路由权限
 
 - [aouth 服务](https://my.oschina.net/u/3707083/blog/1550787)
-
+    - demo/demo-oauth-service: 简单版的OAuth服务器, `test/LoginTest`
+    
 ## spring cloud config server auto reload
 
 config 改动后，应用还不能自动刷新

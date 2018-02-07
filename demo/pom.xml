@@ -17,6 +17,7 @@
 
     <modules>
         <module>demo-service</module>
+        <module>demo-oauth-service</module>
     </modules>
 
 </project>
