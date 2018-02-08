@@ -16,15 +16,18 @@ todo
 ## zuul 路由权限
 
 - [zuul 文档](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html)
-- [aouth 服务1](https://my.oschina.net/u/3707083/blog/1550787)
+- [aouth 服务](https://my.oschina.net/u/3707083/blog/1550787), [2](https://my.oschina.net/u/3707083/blog/1550788)
   - demo/demo-oauth-service
     - 简单版的OAuth服务器, `test/LoginTest`
   - demo/demo-oauth2-service
     - 自定义验证信息 CustomAuthenticationFailedException
-    - 自定义验证 CustomTokenGranter, `test/LoginCustomTokenTest`
-
-- [2](https://my.oschina.net/u/3707083/blog/1550788)
-
+    - 自定义验证 CustomTokenGranter, GRANT_TYPE 为`custom`, `test/LoginCustomTokenTest`
+  - 端点安全, `/oauth/authorize`，`/oauth/token`，`/oauth/check_token`，`/oauth/confirm_access`和`/oauth/error`，使用Sprint Boot实现的OAuth服务器默认只保护了`/oauth/token`，由于该服务器有可能会被外部访问，所以需要保护其他三个端点不被随意访问
+    
+    OauthConfig，只有角色为ROLE_CLIENT才能访问/oauth/check_token
+    
+    - SecurityConfig, 保护 `/oauth/**`, 但 `oauth/token` 不影响
+    
 ## spring cloud config server auto reload
 
 config 改动后，应用还不能自动刷新

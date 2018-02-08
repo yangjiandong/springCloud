@@ -37,6 +37,7 @@ public class LoginTest {
             .postForObject("/oauth/token", requestBody, Map.class);
 
         log.info("result: {}", token.toString());
+        assertThat(token.get("access_token").equals("")).isFalse();
         //assertThat(result.isSuccess()).isTrue();
 
         //result = this.restTemplate.postForObject("/logOut", requestBody, TResult.class);

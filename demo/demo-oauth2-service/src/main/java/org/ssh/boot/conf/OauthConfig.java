@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.CompositeTokenGranter;
 import org.springframework.security.oauth2.provider.TokenGranter;
 import org.springframework.security.oauth2.provider.password.ResourceOwnerPasswordTokenGranter;
@@ -31,6 +32,12 @@ public class OauthConfig extends AuthorizationServerConfigurerAdapter {
             .authenticationManager(authenticationManager);
         endpoints.tokenGranter(tokenGranter(endpoints));// 加了自定义验证
     }
+
+    // 只有角色为ROLE_CLIENT才能访问/oauth/check_token
+    // @Override
+    // public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    //     security.checkTokenAccess("hasAuthority('ROLE_CLIENT')");
+    // }
 
     private DefaultTokenServices tokenServices(AuthorizationServerEndpointsConfigurer endpoints) {
         DefaultTokenServices services = new DefaultTokenServices();

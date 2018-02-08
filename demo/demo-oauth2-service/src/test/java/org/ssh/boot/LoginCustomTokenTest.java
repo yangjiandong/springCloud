@@ -47,5 +47,7 @@ public class LoginCustomTokenTest {
             .postForObject("/oauth/token", requestBody, Map.class);
 
         log.info("result: {}", token.toString());
+        assertThat(token.get("access_token").equals("")).isFalse();
+
     }
 }
