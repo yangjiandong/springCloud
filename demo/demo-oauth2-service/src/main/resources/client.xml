@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:oauth2="http://www.springframework.org/schema/security/oauth2"
+    xsi:schemaLocation="http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <oauth2:client-details-service id="clientDetailsService">
+        <oauth2:client client-id="client1" secret="secret1"
+            authorized-grant-types="password,refresh_token" access-token-validity="1800"
+            refresh-token-validity="604800" scope="all"/>
+    </oauth2:client-details-service>
+
+</beans>

@@ -35,12 +35,12 @@ run:
 - sv-config, sv-registry, sv-gateway, sv-monitoring
 - demo-service
 
-brower: 
-    - `http://sv-registry:8761/`, 
+brower:
+    - `http://sv-registry:8761/`,
     - `http://sv-registry:8761/eureka/apps`
     - `http://localhost:8080/hystrix`
     - demo-service by zuul: `http://localhost:4000/demo/hello`
-    
+
 - [Eureka高可用集群](http://tech.lede.com/2017/03/29/rd/server/SpringCloud1C/), 采用相同配置发布
 
     ```
@@ -52,7 +52,7 @@ brower:
 - sv-registry 运行成功后，其他 app 的 application.yml 设置了 `eureka.client.serviceUrl.defaultZone=http://sv-registry:8761/eureka/`, 就能自动注册到该服务
 - demo-service: Feign客户端
     - TestController, `/testEureka`, 没成功
-    
+
 
 spring cloud
 ---
@@ -80,11 +80,11 @@ spring cloud
 - [AG-Admin](https://gitee.com/geek_qi/ace-security)
 
     AG-Admin是国内首个基于Spring Cloud微服务化开发平台，具有统一授权、认证后台管理系统，其中包含具备用户管理、资源权限管理、网关API管理等多个模块，支持多业务系统并行开发，可以作为后端服务的开发脚手架。代码简洁，架构清晰，适合学习和直接项目中使用。核心技术采用Eureka、Fegin、Ribbon、Zuul、Hystrix、JWT Token、Mybatis等主要框架和中间件，前端采用vue-element-admin组件。
-    
+
 - [zhangxd1989/spring-boot-cloud](https://github.com/zhangxd1989/spring-boot-cloud)
     - 基于 Spring Boot、Spring Cloud、Spring Oauth2 和 Spring Cloud Netflix 等框架构建的微服务项目。
     - [介绍](https://my.oschina.net/yanpenglei/blog/1591159)
-    
+
 2018.01.30
 ---
 

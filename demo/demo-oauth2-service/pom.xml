@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo-oauth-service</artifactId>
+    <artifactId>demo-oauth2-service</artifactId>
     <packaging>jar</packaging>
-    <name>demo-oauth-service</name>
+    <name>demo-oauth2-service</name>
     <description>demo oauth service</description>
 
     <parent>
