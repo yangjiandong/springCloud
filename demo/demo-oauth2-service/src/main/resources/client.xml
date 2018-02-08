@@ -7,7 +7,7 @@
 
     <oauth2:client-details-service id="clientDetailsService">
         <oauth2:client client-id="client1" secret="secret1"
-            authorized-grant-types="password,refresh_token" access-token-validity="1800"
+            authorized-grant-types="password,refresh_token,custom" access-token-validity="1800"
             refresh-token-validity="604800" scope="all"/>
     </oauth2:client-details-service>
 

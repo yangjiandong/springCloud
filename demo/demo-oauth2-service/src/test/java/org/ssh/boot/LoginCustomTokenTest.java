@@ -30,11 +30,22 @@ public class LoginCustomTokenTest {
         requestBody.set("grant_type", "custom");
 
         @SuppressWarnings("unchecked")
-        Map<String, Object> token = this.restTemplate.withBasicAuth("client1", "secret1")
+        Map token = this.restTemplate.withBasicAuth("client1", "secret1")
             .postForObject("/oauth/token", requestBody, Map.class);
 
         log.info("result: {}", token.toString());
         assertThat(token.get("error_description").equals("Invalid username")).isTrue();
         assertThat(token.get("error").equals("invalid_request")).isTrue();
+
+        // success
+        requestBody = new LinkedMultiValueMap();
+        requestBody.add("username", "test123");
+        requestBody.add("password", "pwd");
+        requestBody.set("grant_type", "custom");
+
+        token = this.restTemplate.withBasicAuth("client1", "secret1")
+            .postForObject("/oauth/token", requestBody, Map.class);
+
+        log.info("result: {}", token.toString());
     }
 }

@@ -17,8 +17,12 @@ todo
 
 - [zuul 文档](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html)
 - [aouth 服务1](https://my.oschina.net/u/3707083/blog/1550787)
-    - demo/demo-oauth-service
+  - demo/demo-oauth-service
     - 简单版的OAuth服务器, `test/LoginTest`
+  - demo/demo-oauth2-service
+    - 自定义验证信息 CustomAuthenticationFailedException
+    - 自定义验证 CustomTokenGranter, `test/LoginCustomTokenTest`
+
 - [2](https://my.oschina.net/u/3707083/blog/1550788)
 
 ## spring cloud config server auto reload
