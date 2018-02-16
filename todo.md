@@ -19,6 +19,7 @@ todo
 - [aouth 服务](https://my.oschina.net/u/3707083/blog/1550787), [2](https://my.oschina.net/u/3707083/blog/1550788)
   - demo/demo-oauth-service
     - 简单版的OAuth服务器, `test/LoginTest`
+    - 获得token, `curl client:secret@localhost:8080/oauth/token -d grant_type=password -d username=user -d password=pwd`
   - demo/demo-oauth2-service
     - 自定义验证信息 CustomAuthenticationFailedException
     - 自定义验证 CustomTokenGranter, GRANT_TYPE 为`custom`, `test/LoginCustomTokenTest`
@@ -27,7 +28,15 @@ todo
     OauthConfig，只有角色为ROLE_CLIENT才能访问/oauth/check_token
     
     - SecurityConfig, 保护 `/oauth/**`, 但 `oauth/token` 不影响
+  - demo/demo-resource-service, 指定 oauth 服务到 `demo-oauth2-service`
     
+    测试步骤
+    
+    - 启动 demo-oauth2-service
+    - todo ?
+    
+- [oauth2-jwt-using-spring](http://www.tinmegali.com/en/oauth2-jwt-using-spring/)
+
 ## spring cloud config server auto reload
 
 config 改动后，应用还不能自动刷新
