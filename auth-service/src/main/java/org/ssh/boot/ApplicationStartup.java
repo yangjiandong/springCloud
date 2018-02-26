@@ -13,26 +13,10 @@ import org.ssh.boot.auth.service.UserService;
 // http://blog.netgloo.com/2014/11/13/run-code-at-spring-boot-startup/
 @Component
 @Slf4j
-public class ApplicationStartup
-    // before 1.3
-    //implements ApplicationListener<ContextRefreshedEvent> {
-    implements ApplicationListener<ApplicationReadyEvent> {
+public class ApplicationStartup implements ApplicationListener<ApplicationReadyEvent> {
 
     @Autowired
     UserService userService;
-
-    // @Override
-    // public void onApplicationEvent(final ContextRefreshedEvent event) {
-    //     log.info("start onApplicationEvent ...");
-    //
-    //     // 执行多次的解决
-    //     if (event.getApplicationContext().getParent() == null) {
-    //         log.info("start...");
-    //
-    //         initUser();
-    //         initResource();
-    //     }
-    // }
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
