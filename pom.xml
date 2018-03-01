@@ -63,9 +63,9 @@
         <module>sv-registry</module>
         <module>sv-gateway</module>
         <module>sv-monitoring</module>
-        <module>auth-service</module>
         <module>demo</module>
         <module>notification-service</module>
+        <module>oauth</module>
     </modules>
 
     <build>

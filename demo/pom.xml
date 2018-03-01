@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.sshapp</groupId>
         <artifactId>sshappcloud</artifactId>
-        <version>1.0.0</version>
+        <version>${sshappcloud.version}</version>
     </parent>
 
     <modules>

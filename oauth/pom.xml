@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.sshapp</groupId>
+        <artifactId>sshappcloud</artifactId>
+        <version>${sshappcloud.version}</version>
+    </parent>
+
+    <artifactId>oauth</artifactId>
+    <packaging>pom</packaging>
+    <version>${oauth.version}</version>
+
+    <properties>
+        <oauth.version>${sshappcloud.version}</oauth.version>
+    </properties>
+
+    <modules>
+        <module>oauth-config</module>
+        <module>oauth-service</module>
+    </modules>
+
+    <!-- 只指定版本 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.sshapp</groupId>
+                <artifactId>oauth-config</artifactId>
+                <version>${oauth.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

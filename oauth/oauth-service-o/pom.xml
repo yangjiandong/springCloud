@@ -4,15 +4,16 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>auth-service</artifactId>
+    <artifactId>oauth-service-o</artifactId>
     <packaging>jar</packaging>
-    <name>auth-service</name>
-    <description>sshapp cloud auth service</description>
+    <name>oauth-service</name>
+    <description>sshapp oauth service</description>
 
     <parent>
         <groupId>org.sshapp</groupId>
         <artifactId>sshappcloud</artifactId>
         <version>${sshappcloud.version}</version>
+        <relativePath>../..</relativePath>
     </parent>
 
     <dependencies>
@@ -99,15 +100,4 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <finalName>${project.name}</finalName>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

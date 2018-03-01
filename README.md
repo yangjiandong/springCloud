@@ -85,6 +85,15 @@ spring cloud
     - 基于 Spring Boot、Spring Cloud、Spring Oauth2 和 Spring Cloud Netflix 等框架构建的微服务项目。
     - [介绍](https://my.oschina.net/yanpenglei/blog/1591159)
 
+03.01
+---
+
+## oauth
+
+- [参考](https://my.oschina.net/LinYuanBaoBao/blog/1613463)
+- [spring-security-oauth-jwt](http://www.baeldung.com/spring-security-oauth-jwt)
+
+
 2018.01.30
 ---
 
