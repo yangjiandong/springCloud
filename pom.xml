@@ -10,7 +10,6 @@
         <version>1.5.0</version>
     </parent>
 
-    <!--<groupId>org.sshapp</groupId>-->
     <artifactId>sshappcloud</artifactId>
     <version>${sshappcloud.version}</version>
     <packaging>pom</packaging>
@@ -22,22 +21,6 @@
 
     <!--公共依赖-->
     <dependencies>
-        <!--注册中心-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-eureka</artifactId>-->
-        <!--</dependency>-->
-        <!--配置中心-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-config</artifactId>-->
-        <!--</dependency>-->
-        <!--监控-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
-        <!--</dependency>-->
-
         <!--Lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>

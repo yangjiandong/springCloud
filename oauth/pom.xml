@@ -21,6 +21,7 @@
     <modules>
         <module>oauth-config</module>
         <module>oauth-service</module>
+        <module>resource1-server</module>
     </modules>
 
     <!-- 只指定版本 -->
